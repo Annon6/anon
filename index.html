@@ -6,18 +6,18 @@
 
 <html lang="en">
 <head>
-  	<title> Novel Object Synthesis via Adaptive Text-Image Harmony</title>
+  	<title>Novel Object Synthesis via Adaptive Text-Image Harmony</title>
       <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/
           if you update and want to force Facebook to re-scrape. -->
-  	<meta property="og:image" content="./resources/fig_0.png"/>
+  	<meta property="og:image" content="./resources/first_fig2.png"/>
   	<meta property="og:title" content="Novel Object Synthesis via Adaptive Text-Image Harmony" />
-  	<!-- <meta property="og:description" content="A simple yet effective sampling method without any training to generate new and meaningful combinations from two given object texts in text-to-image synthesis." /> -->
+  	<!-- <meta property="og:description" content="A method for synthesizing a new object by mixing two different concepts using text-to-image diffusion models." /> -->
     <!-- Twitter automatically scrapes this. Go to https://cards-dev.twitter.com/validator?
         if you update and want to force Twitter to re-scrape. -->
     <meta property="twitter:card"          content="summary" />
     <meta property="twitter:title"         content="Novel Object Synthesis via Adaptive Text-Image Harmony" />
-    <!-- <meta property="twitter:description"   content="A simple yet effective sampling method without any training to generate new and meaningful combinations from two given object texts in text-to-image synthesis." /> -->
-    <meta property="twitter:image"         content="./resources/fig_0.png" />
+    <!-- <meta property="twitter:description"   content="A method for synthesizing a new object by mixing two different concepts using text-to-image diffusion models." /> -->
+    <meta property="twitter:image"         content="./resources/first_fig2.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Add your Google Analytics tag here -->
@@ -31,186 +31,647 @@
         gtag('js', new Date());
         gtag('config', 'UA-97476543-1');
     </script>
-
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
 </head>
 
 <body>
 <div class="container">
     <div class="title">
-        Novel Object Synthesis via Adaptive Text-Image Harmony
+      Novel Object Synthesis via Adaptive Text-Image Harmony
     </div>
 
     <!-- <div class="venue">
-        In ECCV 2024
+        In Conference 20XX
     </div> -->
 
     <br><br>
 
-    <div class="author">
-        <a>Anonymous authors</a>
+    <!-- <div class="author">
+        <a href="https://scholar.google.com.sg/citations?user=8gm-CYYAAAAJ">Jun Hao Liew</a><sup>*</sup>
     </div>
+    <div class="author">
+        <a href="https://hanshuyan.github.io/">Hanshu Yan</a><sup>*</sup>
+    </div>
+    <div class="author">
+        <a href="https://scholar.google.com/citations?user=DdCAbWwAAAAJ">Daquan Zhou</a><sup></sup>
+    </div>
+    <div class="author">
+        <a href="https://sites.google.com/site/jshfeng/home">Jiashi Feng</a><sup></sup>
+    </div> -->
+
+    <!-- <br><br>
+
+    <div class="affiliation"><sup>&nbsp;</sup>ByteDance</div>
+
+    <br><br> -->
+
+    <!-- <div class="links"><a href="https://arxiv.org/abs/2210.16056">[Paper]</a></div> -->
+    <!-- <div class="links"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">[Video]</a></div>
+    <div class="links"><a href="https://github.com/elliottwu/webpage-template">[Code]</a></div> -->
+    <div class="author">
+      <a>Anonymous authors</a>
+    </div>
+    <br><br>
+
+    <img style="width: 80%;" src="resources/paper_image/first_fig2.png" alt="Teaser figure."/>
+    <!-- <br>
+    <p style="width: 80%; TEXT-ALIGN: center">
+        Our MagicMix allows mixing of two different semantics to create a novel concept.
+    </p> -->
 
     <br><br>
-    <br><br>
-
-    
-    <img style="width: 80%;" src="./resources/first_fig.png" alt="Teaser figure."/>
-    <br><br>
-
-   
-
-    <br>
-    <p style="width: 80%; text-align: justify;font-size: 16px;font-family: 'Times New Roman', Times, serif;">
-        We propose a straightforward yet powerful approach for generating novel and meaningful
-        combinations from a given object text-image pair in text-to-image synthesis. Our algorithm produces
-        these combined object images using the central image and its surrounding text inputs, such as Bottle
-        (image) and Porcupine (text) in the left picture. Specifically, the left central image depicts a real-world
-        bottle, while the right central image, representing a dog, is generated using SDXL Turbo.
-    </p>
-    <br>
     <hr>
 
     <h1>Abstract</h1>
-    <p style="width: 80%; text-align: justify;">
-        In this paper, we study an object synthesis task that combines an object text with
-        an object image to create a new object image. However, most diffusion models
-        struggle with this task due to the imbalance between text and image inputs. To
-        address this issue, we propose a simple yet effective method called Adaptive Text-
-        Image Harmony (ATIH) for generating novel and surprising objects. First, we
-        introduce a scale factor and an injection step to balance text and image features in
-        cross-attention and to preserve image information in self-attention during the text8
-        image inversion diffusion process, respectively. Second, to adaptively adjust these
-        parameters, we present a novel similarity score function that not only maximizes
-        the similarities between the generated object image and the input text/image but
-        also balances these similarities to harmonize text and image integration. Third,
-        we optimize the noise to simultaneously enhance object editability and improve
-        the reconstruction quality of the original object image. Extensive experiments
-        demonstrate the effectiveness of our approach, showcasing remarkable object
-        creations such as Bottle-Sea Lion and Dog-Lobster in Fig. 1. Project Page.
+    <p style="width: 80%;">
+      In this paper, we study an object synthesis task that combines an object text with an object image to create a new object image. However, most diffusion models struggle with this task,i.e., often generating an object that predominantly reflects either the text or the image due to an imbalance between their inputs. To address this issue, we propose a simple yet effective method called Adaptive Text-Image Harmony <b>(ATIH)</b> to generate novel and surprising objects.
+      First, we introduce a scale factor and an injection step to balance text and image features in cross-attention and to preserve image information in self-attention during the text-image inversion diffusion process, respectively. Second, to better integrate object text and image, we design a balanced loss function with a noise parameter, ensuring both optimal editability and fidelity of the object image. Third, to adaptively adjust these parameters, 
+      we present a novel similarity score function that not only maximizes the similarities between the generated object image and the input text/image but also balances these similarities to harmonize text and image integration.  
     </p>
+    <h1>Application</h1>
+    <p style="TEXT-ALIGN: center">
+      <b>Video character creation to stimulate imagination.</b>
+      
+    </p>
+    <p style="TEXT-ALIGN: center">
+      Created with <a href="https://lumalabs.ai/dream-machine/creations" target="_blank">luma Dream Machine</a> based on the images generated by our method.
+    </p>
+    <!-- <p style="TEXT-ALIGN: center">
+        <b>(Hover mouse to check out the concept removed outputs)</b>
+    </p> -->
 
-    <br>
+    <div class="row">
+        <div class="column">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    <img src="resources/gif/monkey.gif" alt="dumpling" style="width:224px;height:224px">
+                        <!-- <div class="text-block">
+                            <h4>remove dumpling</h4>
+                        </div> -->
+                    </div>
+                    <div class="flip-box-back">
+                        <img src="resources/mix_image/monkey_fuse_with_strawberry_vary_0.52_astep_2_score_1.495.png" alt="remove dumpling" style="width:224px;height:224px">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    <img src="resources/gif/horse.gif" alt="shell" style="width:224px;height:224px">
+                        <!-- <div class="text-block">
+                            <h4>remove shell</h4>
+                        </div> -->
+                    </div>
+                    <div class="flip-box-back">
+                        <img src="resources/mix_image/horse_0005_fuse_with_African crocodile_vary_0.49_astep_3_score_1.469.png" alt="remove shell" style="width:224px;height:224px">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    <img src="resources/gif/human.gif" alt="corgi" style="width:224px;height:224px">
+                        <!-- <div class="text-block">
+                            <h4>remove dog</h4>
+                        </div> -->
+                    </div>
+                    <div class="flip-box-back">
+                        <img src="resources/mix_image/man_fuse_with_bald eagle_vary_1.365_astep_2_score_1.478.png" alt="remove corgi" style="width:224px;height:224px">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    <img src="resources/gif/wolf.gif" alt="hamburger" style="width:224px;height:224px">
+                        <!-- <div class="text-block">
+                            <h4>remove hamburger</h4>
+                        </div> -->
+                    </div>
+                    <div class="flip-box-back">
+                        <img src="resources/mix_image/wolf_fuse_with_African crocodile_vary_1.313_astep_3_score_1.116.png" alt="remove hamburger" style="width:224px;height:224px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    <img src="resources/gif/rabbit.gif" alt="watermelon" style="width:224px;height:224px">
+                        <!-- <div class="text-block">
+                            <h4>remove watermleon</h4>
+                        </div> -->
+                    </div>
+                    <div class="flip-box-back">
+                        <img src="resources/mix_image/rabbit_fuse_with_king penguin_vary_0.39_astep_3_score_1.372.png" alt="remove watermelon" style="width:224px;height:224px">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    <img src="resources/gif/naruto.gif" alt="cat" style="width:224px;height:224px">
+                        <!-- <div class="text-block">
+                            <h4>remove cat</h4>
+                        </div> -->
+                    </div>
+                    <div class="flip-box-back">
+                        <img src="resources/mix_image/9_fuse_with_cougar_vary_0.811_astep_2_score_1.402.png" alt="remove cat" style="width:224px;height:224px">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    <img src="resources/gif/giraffe.gif" alt="pumpkin" style="width:224px;height:224px">
+                        <!-- <div class="text-block">
+                            <h4>remove pumpkin</h4>
+                        </div> -->
+                    </div>
+                    <div class="flip-box-back">
+                        <img src="resources/mix_image/giraffe_fuse_with_badger_vary_0.629_astep_2_score_1.634.png" alt="remove pumpkin" style="width:224px;height:224px">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                    <img src="resources/gif/bear_toy.gif" alt="fruit_basket" style="width:224px;height:224px">
+                        <!-- <div class="text-block">
+                            <h4>remove basket</h4>
+                        </div> -->
+                    </div>
+                    <div class="flip-box-back">
+                        <img src="resources/mix_image/38_fuse_with_triceratops_vary_1.224_astep_2_score_1.507.png" alt="remove fruit basket" style="width:224px;height:224px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
     <hr>
-   
 
+    <h1>Object Mixing</h1>
+    <!-- <p style="width: 80%; TEXT-ALIGN: center">
+        Semantic mixing refers to the task of mixing two different semantics to create a new concept.
+    </p>
+    <p style="width: 80%; TEXT-ALIGN: center">
+        <b>(Hover mouse to reveal the generated results).</b>
+    </p> -->
 
-    <h1>Our framework</h1>
-    <p style="text-align: justify">
-        Framework of the combinational object synthesis incorporating a scale factor α, an
-        injection step i and noise ϵt in the diffusion process. The noise ϵt is regularized to simultaneously
-        enhance object editability and maintain object fidelity. Using the optimal noise ϵt, we introduce an
-        adaptive harmony mechanism to adjust α and i, balancing text and image similarities.
+    <!-- <div class="row">
+        <div class="column">
+            <img src="resources/origin_image/monkey.png" alt="corgi" style="width:224px;height:224px">
+        </div>
+        <div class="column">
+            <div class="empty-box">
+                <div class="centered">+ strawberry = </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                        <img src="resources/unknown.png" alt="unknown" style="width:224px;height:224px">
+                    </div>
+                    <div class="flip-box-back">
+                        <img src="resources\mix_image\111000000008_fuse_with_strawberry_vary_0.52_astep_2_score_1.495.png" alt="corgi + coffee machine" style="width:224px;height:224px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="row">
+        <div class="column">
+            <img src="resources/origin_image/monkey.png" alt="corgi" style="width:224px;height:224px">
+        </div>
+        <div class="column centered-text">
+          &nbsp;&nbsp; + strawberry =&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="column">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                        <img src="resources/unknown.png" alt="unknown" style="width:224px;height:224px">
+                    </div>
+                    <div class="flip-box-back">
+                        <img src="resources/mix_image/monkey_fuse_with_strawberry_vary_0.52_astep_2_score_1.495.png" alt="corgi + coffee machine" style="width:224px;height:224px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+            <img src="resources/origin_image/car_0001.png" alt="corgi" style="width:224px;height:224px">
+        </div>
+        <div class="column centered-text">
+            + hippopotamus =&#8202;
+        </div>
+        <div class="column">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                        <img src="resources/unknown.png" alt="unknown" style="width:224px;height:224px">
+                    </div>
+                    <div class="flip-box-back">
+                        <img src="resources/mix_image/car_0001_fuse_with_hippopotamus_vary_0.992_astep_1_score_1.236.png" alt="corgi + coffee machine" style="width:224px;height:224px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="column">
+          <img src="resources/origin_image/corgi.png" alt="corgi" style="width:224px;height:224px">
+      </div>
+      <div class="column centered-text">
+        &nbsp;&nbsp;+ white  shark =&nbsp;&nbsp;&#8201;
+
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                      <img src="resources/unknown.png" alt="unknown" style="width:224px;height:224px">
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/mix_image/corgi_fuse_with_white shark_vary_0.748_astep_3_score_1.387.png" alt="corgi + coffee machine" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="column">
+        <img src="resources/origin_image/9.png" alt="corgi" style="width:224px;height:224px">
+    </div>
+    <div class="column centered-text">
+      &nbsp; + triceratopsk =&nbsp;&nbsp;&#8202;
+    </div>
+    <div class="column">
+        <div class="flip-box">
+            <div class="flip-box-inner">
+                <div class="flip-box-front">
+                    <img src="resources/unknown.png" alt="unknown" style="width:224px;height:224px">
+                </div>
+                <div class="flip-box-back">
+                    <img src="resources/mix_image/9_fuse_with_triceratops_vary_0.681_astep_2_score_1.538.png" alt="corgi + coffee machine" style="width:224px;height:224px">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <br><br>
+    <hr>
+    <h1>More result</h1>
+    <div class="row">
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/horse2.gif" alt="dumpling" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove dumpling</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/origin_image/horse_0006.png" alt="remove dumpling" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/lion_good.gif" alt="shell" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove shell</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/origin_image/lion.png" alt="remove shell" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/mouse.gif" alt="corgi" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove dog</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/origin_image/211000000007.jpg" alt="remove corgi" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/wolf_good.gif" alt="hamburger" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove hamburger</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/origin_image/wolf.png" alt="remove hamburger" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="row">
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/rabbit3.gif" alt="watermelon" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove watermleon</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/origin_image/811000000002.jpg" alt="remove watermelon" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/deer.gif" alt="cat" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove cat</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/origin_image/811000000001.jpg" alt="remove cat" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/owl_good.gif" alt="pumpkin" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove pumpkin</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/origin_image/owl.png" alt="remove pumpkin" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/duck_good.gif" alt="fruit_basket" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove basket</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/origin_image/duck.png" alt="remove fruit basket" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+    <br><br>
+    <hr>
+    <h1>ATIH</h1>
+
+    <p style="TEXT-ALIGN: center">
+      <b> With adjust injection step i to balance fidelity and editability.(Demonstrate the fusion process)</b>
     </p>
 
+    <div class="row">
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                    <p style="TEXT-ALIGN: center">airship</p>
+                  <img src="resources/gif/car_0001.gif" alt="watermelon" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove watermleon</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                    <p style="TEXT-ALIGN: center">airship</p>
+                      <img src="resources/origin_image/car_0001.png" alt="remove watermelon" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                    <p style="TEXT-ALIGN: center">cock</p>
+                  <img src="resources/gif/rabbit2.gif" alt="cat" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove cat</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                    <p style="TEXT-ALIGN: center">cock</p>
+                      <img src="resources/origin_image/rabbit.png" alt="remove cat" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                    <p style="TEXT-ALIGN: center">badger</p>
+                  <img src="resources/gif/squirrel.gif" alt="pumpkin" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove pumpkin</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                    <p style="TEXT-ALIGN: center">badger</p>
+                      <img src="resources/origin_image/squirrel.png" alt="remove pumpkin" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                    <p style="TEXT-ALIGN: center">bald eagle</p>
+                  <img src="resources/gif/horse_0005.gif" alt="fruit_basket" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove basket</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                    <p style="TEXT-ALIGN: center">bald eagle</p>
+                      <img src="resources/origin_image/horse_0005.png" alt="remove fruit basket" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 
-    <img style="width: 100%;" src="./resources/framework.png" alt="Teaser figure."/>
+  <br><br>
+  <p style="TEXT-ALIGN: center">
+    <b>Adaptively adjust the scale factor α for harmonizing text and image in 10 seconds.</b></p>
+    <div class="row">
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/ATIH_car_0001.gif" alt="watermelon" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove watermleon</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/mix_image/car_0001_fuse_with_airship_vary_1.281_astep_2_score_1.23.png" alt="remove watermelon" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/ATIHrabbit.gif" alt="cat" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove cat</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/mix_image/10rabbit_fuse_with_cock_vary_0.394_astep_2_score_1.512.png" alt="remove cat" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/ATIHsquirrel.gif" alt="pumpkin" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove pumpkin</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/mix_image/11squirrel_fuse_with_badger_vary_0.443_astep_2_score_1.647.png" alt="remove pumpkin" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="column">
+          <div class="flip-box">
+              <div class="flip-box-inner">
+                  <div class="flip-box-front">
+                  <img src="resources/gif/ATIHhorse_0005.gif" alt="fruit_basket" style="width:224px;height:224px">
+                      <!-- <div class="text-block">
+                          <h4>remove basket</h4>
+                      </div> -->
+                  </div>
+                  <div class="flip-box-back">
+                      <img src="resources/mix_image/11horse_0005_fuse_with_bald eagle_vary_0.32_astep_3_score_1.413.png" alt="remove fruit basket" style="width:224px;height:224px">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
     <br><br>
     <hr>
     
-    <h1>Comparing Results</h1>
-        <!-- <p style="text-align: center">
-            We conduct visual comparisons to assess the generation of combinatorial objects. In this analysis, we evaluate our BASS method against state-of-the-art T2I models, including Stable-Diffusion2<a href="#ref2"><sup>[2]</sup></a> , DALLE2<a href="#ref1"><sup>[1]</sup></a>, ERNIE-ViLG2(Baidu)<a href="#ref3"><sup>[3]</sup></a> , and Bing(Microsoft). 
-        </p>
-            <p style="text-align: center">
-                We compare our BASS results to other T2I models with the general prompt 'Hybrid of [p1] and [p2]'.
-            </p> -->
-        
-
-        <p style="text-align: justify">
-            Comparisons with different image editing methods. We observe that Infedit [61]
-            Masactrl [6] and InstructPix2Pix [5] struggle to fuse object images and texts, while our method
-            successfully implements new object synthesis, such as fawn-bowling ball in the second row.
-        </p>
-
-
-        
-        <img style="width: 80%;" src="./resources/compare_edit.png" alt="Teaser figure."/>
-
-        <p style="text-align: justify">
-            Comparisons with different creative mixing methods. We observe that our results
-            surpass those of MagicMix [29]. For ConceptLab [16], we exclusively examine its fusion results
-            without making good or bad comparisons, as it is a distinct approach to creative generation.
-        </p>
-
-
-        
-        <img style="width: 80%;" src="./resources/compare_mix.png" alt="Teaser figure."/>
-
-
-        
-    <br> <br>
-    <hr>
     
-      <h1>Ablation Study</h1>
-          <p style="text-align: center">
-            Ablation study of optimizing ϵt, injection step i and scale
-            factor α from the third column to the fifth column.
-          </p>
-
-
-    <img style="width: 80%;" src="./resources/ablation.png" alt="Teaser figure."/>
-
-
-    <br> <br>
-    <hr>
-    <h1>More Results</h1>
-
-    <h2>Fused Results With three Prompts</h2>
-
-      <p style="TEXT-ALIGN: justify">
-        In this subsection, we
-        demonstrate our results with multiple prompts, highlighting the potential of our ATIH model for continuous
-        editing. 
-    </p>
-      <img style="width: 80%;" src="./resources/three_fuse.png" alt="Teaser figure."/>
-
-    <h2>Comparison with complex prompt</h2>
-      <p style="TEXT-ALIGN: justify">
-        In this subsection, we compare our results with those of the DALLE·3 model assisted by Copilot. We used
-        complex descriptive prompts for our editing results and provided the original images as input. The DALLE·3
-        model then edited the original images using these complex prompts. Firstly, we observe that the DALLE·3
-        model does not achieve results as acceptable as ours. Secondly, even with sufficient prompts, the DALLE·3
-        model fails to maintain the original structure and layout of the images
-    </p>
-      <img style="width: 80%;" src="./resources/compex.png" alt="Teaser figure."/>
-
-    <h2>More visual Results</h2>
-      <p style="TEXT-ALIGN: justify">
-        In this subsection, we present additional results of our model. we shows more generation results of our
-        ATIH model. We used 4 images and edited them with 4 different text prompts.
-    </p>
-      <img style="width: 80%;" src="./resources/more_res.png" alt="Teaser figure."/>
-
-<!--     <br><br>
-    <hr>
-    
-
-
-    <h2>References</h2>
-    <blockquote>
-        <p id="ref1">[1]Aditya Ramesh, Prafulla Dhariwal, Alex Nichol, Casey Chu, and Mark Chen. Hierarchical text-
-            conditional image generation with clip latents. In arXiv:2204.06125, 2022.</p>
-        <p id="ref2">[2]Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Bj ̈orn Ommer. High-
-            resolution image synthesis with latent diffusion models. In Proceedings of the IEEE/CVF
-            Conference on Computer Vision and Pattern Recognition (CVPR), pp. 10684–10695, 2022.</p>
-        <p id="ref3">[3]Zhida Feng, Zhenyu Zhang, Xintong Yu, Yewei Fang, Lanxin Li, Xuyi Chen, Yuxiang Lu, Ji-
-            axiang Liu, Weichong Yin, Shikun Feng, Yu Sun, Hao Tian, Hua Wu, and Haifeng Wang.
-            Ernie-vilg 2.0: Improving text-to-image diffusion model with knowledge-enhanced mixture-of-
-            denoising-experts. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern
-            Recognition (CVPR), pp. 10135–10145.2023.</p>
-        <p id="ref4">[4]Yuval Kirstain, Adam Polyak, Uriel Singer, Shahbuland Matiana, Joe Penna, and Omer Levy.
-            Pick-a-pic: An open dataset of user preferences for text-to-image generation. arXiv preprint
-            arXiv:2305.01569, 2023.</p>    
-        <p id="ref5">[5]Xiaoshi Wu, Yiming Hao, Keqiang Sun, Yixiong Chen, Feng Zhu, Rui Zhao, and Hongsheng Li.
-            Human preference score v2: A solid benchmark for evaluating human preferences of text-to-image
-            synthesis. arXiv preprint arXiv:2306.09341, 2023.</p>        
-        <p id="ref6">[6]Schuhmann C, Beaumont R, Vencu R, et al. Laion-5b: An open large-scale dataset for training next generation image-text models[J]. Advances in Neural Information Processing Systems, 2022, 35: 25278-25294.</p>
-        <p id="ref7">[7]https://www.instagram.com/les.creatonautes/</p>
-      </blockquote>
-    
+    <h2>Again fuse</h2>
+    <img style="width: 80%;" src="resources/paper_image/three_fuse.png"
+        alt="Breed mixing results"/>
     <br>
-    <hr> -->
+    <h2>Compare with image edit methonds</h2>
+    <img style="width: 80%;" src="resources/paper_image/compare_edit2.png"
+         alt="Semantic style transfer results"/>
+    <br>
 
+    <h2>Compare with mix methonds</h2>
+    <img style="width: 80%;" src="resources/paper_image/compare_mix2.png"
+         alt="Novel object synthesis results"/>
+    <br>
+
+    <h2>More result</h2>
+    <img style="width: 80%;" src="resources/paper_image/more_res.png"
+        alt="Concept removal results"/>
+    <br>
+
+    <br><br>
+    <hr>
+
+    <!-- <h1>Paper</h1>
+    <div class="paper-thumbnail">
+        <a href="https://arxiv.org">
+            <img class="layered-paper-big" width="100%" src="./resources/paper.jpg" alt="Paper thumbnail"/>
+        </a>
+    </div>
+    <div class="paper-info">
+        <h3>MagicMix: Semantic Mixing with Diffusion Models</h3>
+        <p>Jun Hao Liew*, Hanshu Yan*, Daquan Zhou and Jiashi Feng</p>
+        <p>arXiv, 2022. (*equal contribution)</p>
+        <pre><code>@article{liew2022magicmix,
+    title = {MagicMix: Semantic Mixing with Diffusion Models},
+    author = {Liew, Jun Hao and Yan, Hanshu and Zhou, Daquan and Feng, Jiashi},
+    journal = {arXiv preprint arXiv:2210.16056},
+    year = {2022},
+}</code></pre>
+    </div>
+
+    <br><br>
+    <hr>
+
+    <h1>Acknowledgements</h1>
+    <p style="width: 80%;">
+        This template was originally made by <a href="http://web.mit.edu/phillipi/">Phillip Isola</a> and <a href="http://richzhang.github.io/">Richard Zhang</a> for a <a href="http://richzhang.github.io/colorization/">colorful project</a>, and inherits the modifications made by <a href="https://github.com/jasonyzhang/webpage-template">Jason Zhang</a> and <a href="https://github.com/elliottwu/webpage-template">Elliott Wu</a>.
+    </p>
+
+    <br><br>
+</div>
 
 <script>
     let slideIndex = 1;
@@ -239,7 +700,7 @@
       slides[slideIndex-1].style.display = "block";  
       dots[slideIndex-1].className += " active";
     }
-</script>
+</script> -->
 
 </body>
 
