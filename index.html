@@ -31,7 +31,7 @@
         gtag('js', new Date());
         gtag('config', 'UA-97476543-1');
     </script>
-    <style>
+    <!-- <style>
 
         .author-list {
             text-align: center;
@@ -53,6 +53,202 @@
         sup {
             font-size: smaller;
         }
+    </style> -->
+    <style>
+
+
+        body {
+            font-family: 'Georgia', serif;
+            margin: 50px;
+            line-height: 1.6;
+        }
+
+        /* Abstract and Section Title Styles */
+        h1 {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Abstract Paragraph Style */
+        p {
+            font-size: 18px;
+            color: #444;
+            text-align: justify;
+            margin: 0 auto;
+            width: 80%;
+            line-height: 1.8;
+        }
+
+        /* Emphasizing ATIH */
+        b {
+            font-weight: bold;
+            color: #000;
+        }
+
+        /* Body overall style */
+        
+        /* Title style */
+        .title {
+            font-size: 48px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #E88872, #BB89C9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        /* Subtitle style */
+        .subtitle {
+            
+            font-size: 36px;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+
+        /* Conference and year */
+        .conference {
+            
+            font-size: 30px;
+            color: #0f0e0e; 
+            margin-bottom: 2px;
+        }
+
+        /* Author list */
+        .authors {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .authors a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .authors a:hover {
+            text-decoration: underline;
+        }
+
+        .affiliation {
+            font-size: 16px;
+            color: #777;
+        }
+
+        /* Equal contribution note */
+        .equal-contribution {
+            font-size: 14px;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        /* Button style */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+        
+        /* Button styles */
+        .btn-icon {
+            background-color: #333; /* 按钮原有的颜色 */
+            color: white; /* 文字为白色 */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold; /* 加粗文字 */
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-icon i {
+            margin-right: 8px;
+            color: white; /* 图标也为白色 */
+            font-size: 18px; /* 图标大小合适 */
+        }
+        
+        /* White text on dark background */
+        .btn-icon span {
+            color: white; /* 文字颜色为白色 */
+            font-weight: bold; /* 加粗文字 */
+        }
+        
+        /* Button hover effect */
+        .btn-icon:hover {
+            background-color: #555; /* 悬停时按钮变浅灰色 */
+        }
+        .flip-box {
+            display: block;
+            background-color: transparent;
+            width: 224px;
+            height: 224px;
+            /* border: 1px solid #f1f1f1; */
+            perspective: 1000px; /* Remove this if you don't want the 3D effect */
+          }
+        .flip-box-front p, .flip-box-back p {
+            margin: 0;
+            padding: 1px;
+            /* background-color: #f5f5f5; */
+            text-align: center;
+            font-weight: bold;
+            font-size: 22px;
+            background-color: transparent;
+            flex-shrink: 0;
+            color: #333;
+          }
+          .flip-box {
+            display: block;
+            background-color: transparent;
+            width: 224px;
+            height: 224px;
+            /* border: 1px solid #f1f1f1; */
+            perspective: 1000px; /* Remove this if you don't want the 3D effect */
+          }
+          .flip-box_home {
+            display: block;
+            background-color: transparent;
+            /* border: 1px solid #f1f1f1; */
+            perspective: 1000px;
+          }
+          /* This container is needed to position the front and back side */
+          .flip-box-inner {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+          }
+          
+          /* Do an horizontal flip when you move the mouse over the flip box container */
+          .flip-box:hover .flip-box-inner {
+            display: block;
+            transform: rotateY(180deg);
+          }
+          
+          /* Position the front and back side */
+          .flip-box-front, .flip-box-back {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            -webkit-backface-visibility: hidden; /* Safari */
+            backface-visibility: hidden;
+            justify-content: space-between; /* 确保文本和图片有足够的空间 */
+            align-items: center;
+          }
     </style>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -87,28 +283,50 @@
       <a>Anonymous authors</a>
     </div>
     <br><br> -->
-    <div class="title">
-        Novel Object Synthesis via Adaptive Text-Image Harmony
-    </div>
-    
-    <div class="author-list">
+    <!-- <div class="title">DiverseDream</div> -->
+    <div class="title">Novel Object Synthesis via Adaptive Text-Image Harmony</div>
+    <br>
+    <!-- Conference Info -->
+    <div class="conference">NeurIPS 2024</div>
+    <br><br>
+    <!-- Author List -->
+    <div class="authors">
         Zeren Xiong<sup>1</sup>, Zedong Zhang<sup>1</sup>, Zikun Chen<sup>1</sup>, Shuo Chen<sup>2</sup>,<br>
         Xiang Li<sup>3</sup>, Gan Sun<sup>4</sup>, Jian Yang<sup>1</sup>, Jun Li<sup>1*</sup>
     </div>
-    
-    <div class="affiliations">
-        <sup>1</sup>School of Computer Science and Engineering, Nanjing University of Science and Technology, Nanjing, 210094, China<br>
-        <sup>2</sup>RIKEN,
-        <sup>3</sup>College of Computer Science, Nankai University, Tianjing, 300350, China<br>
-        <sup>4</sup>College of Automation Science and Engineering, South China University of Technology, Guangzhou, 510640, China
+    <br>
+    <div class="affiliation">
+        <sup>1</sup>Nanjing University of Science and Technology
+        <sup>2</sup>RIKEN<br>
+        <sup>3</sup>Nankai University
+        <sup>4</sup>South China University of Technology
+    </div><br>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <div class="button-container">
+        <!-- <a href="http://arxiv.org/abs/2410.20823" class="btn-icon">
+            <i class="fas fa-file-pdf"></i><span>Paper</span>
+        </a> -->
+        <a href="http://arxiv.org/abs/2410.20823" class="btn-icon">
+            <i class="fas fa-file-alt"></i><span>ArXiv</span>
+        </a>
+        <!-- <a href="#" class="btn-icon">
+            <i class="fas fa-video"></i><span>Video</span>
+        </a> -->
+        <a href="https://github.com/xzr52/ATIH-code?tab=readme-ov-file" class="btn-icon">
+            <i class="fab fa-github"></i><span>Code</span>
+        </a>
+        <a href="https://drive.google.com/file/d/1PsyWxqtBGb-545nPRlpX8VMcW2WTERCc/view?usp=sharing" class="btn-icon">
+            <i class="fas fa-hdd"></i><span>Dataset</span>
+        </a>
+        <!-- <a href="https://drive.google.com/file/d/1PsyWxqtBGb-545nPRlpX8VMcW2WTERCc/view?usp=sharing" class="btn-icon">
+            <i class="fab fa-github"></i><span>Dataset</span>
+        </a> -->
     </div>
-    
-    <div class="emails">
-        {zandyz, csjyang, junli}@njust.edu.cn, {xzr3312, zikunchencs, sungan1412}@gmail.com<br>
-        xiang.li.implus@nankai.edu.cn, shuo.chen.ya@riken.jp
-    </div>
+
+
     <br><br>
-    <img style="width: 80%;" src="resources/paper_image/first_fig2.png" alt="Teaser figure."/>
+    <img style="width: 87%;" src="resources/paper_image/first_fig2.png" alt="Teaser figure."/>
     <!-- <br>
     <p style="width: 80%; TEXT-ALIGN: center">
         Our MagicMix allows mixing of two different semantics to create a novel concept.
@@ -532,14 +750,14 @@
           <div class="flip-box">
               <div class="flip-box-inner">
                   <div class="flip-box-front">
-                    <p style="TEXT-ALIGN: center">airship</p>
+                    <p style="TEXT-ALIGN: center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;airship</p>
                   <img src="resources/gif/car_0001.gif" alt="watermelon" style="width:224px;height:224px">
                       <!-- <div class="text-block">
                           <h4>remove watermleon</h4>
                       </div> -->
                   </div>
                   <div class="flip-box-back">
-                    <p style="TEXT-ALIGN: center">airship</p>
+                    <p style="TEXT-ALIGN: center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;airship</p>
                       <img src="resources/origin_image/car_0001.png" alt="remove watermelon" style="width:224px;height:224px">
                   </div>
               </div>
@@ -549,14 +767,14 @@
           <div class="flip-box">
               <div class="flip-box-inner">
                   <div class="flip-box-front">
-                    <p style="TEXT-ALIGN: center">cock</p>
+                    <p style="TEXT-ALIGN: center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cock</p>
                   <img src="resources/gif/rabbit2.gif" alt="cat" style="width:224px;height:224px">
                       <!-- <div class="text-block">
                           <h4>remove cat</h4>
                       </div> -->
                   </div>
                   <div class="flip-box-back">
-                    <p style="TEXT-ALIGN: center">cock</p>
+                    <p style="TEXT-ALIGN: center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cock</p>
                       <img src="resources/origin_image/rabbit.png" alt="remove cat" style="width:224px;height:224px">
                   </div>
               </div>
@@ -566,14 +784,14 @@
           <div class="flip-box">
               <div class="flip-box-inner">
                   <div class="flip-box-front">
-                    <p style="TEXT-ALIGN: center">badger</p>
+                    <p style="TEXT-ALIGN: center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;badger</p>
                   <img src="resources/gif/squirrel.gif" alt="pumpkin" style="width:224px;height:224px">
                       <!-- <div class="text-block">
                           <h4>remove pumpkin</h4>
                       </div> -->
                   </div>
                   <div class="flip-box-back">
-                    <p style="TEXT-ALIGN: center">badger</p>
+                    <p style="TEXT-ALIGN: center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;badger</p>
                       <img src="resources/origin_image/squirrel.png" alt="remove pumpkin" style="width:224px;height:224px">
                   </div>
               </div>
@@ -583,14 +801,14 @@
           <div class="flip-box">
               <div class="flip-box-inner">
                   <div class="flip-box-front">
-                    <p style="TEXT-ALIGN: center">bald eagle</p>
+                    <p style="TEXT-ALIGN: center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bald eagle</p>
                   <img src="resources/gif/horse_0005.gif" alt="fruit_basket" style="width:224px;height:224px">
                       <!-- <div class="text-block">
                           <h4>remove basket</h4>
                       </div> -->
                   </div>
                   <div class="flip-box-back">
-                    <p style="TEXT-ALIGN: center">bald eagle</p>
+                    <p style="TEXT-ALIGN: center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bald eagle</p>
                       <img src="resources/origin_image/horse_0005.png" alt="remove fruit basket" style="width:224px;height:224px">
                   </div>
               </div>
@@ -682,7 +900,7 @@
     <br>
 
     <h1>Compare with mix methonds</h1>
-    <img style="width: 80%;" src="resources/paper_image/compare_mix2.png"
+    <img style="width: 80%;" src="resources/paper_image/compare_mix3.png"
          alt="Novel object synthesis results"/>
     <br>
 
