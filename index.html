@@ -10,12 +10,12 @@
       <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/
           if you update and want to force Facebook to re-scrape. -->
   	<meta property="og:image" content="./resources/first_fig2.png"/>
-  	<meta property="og:title" content="Novel Object Synthesis via Adaptive Text-Image Harmony" />
+  	<meta property="og:title" content="VMDiff: Visual Mixing Diffusion for Limitless Cross-Object Synthesis" />
   	<!-- <meta property="og:description" content="A method for synthesizing a new object by mixing two different concepts using text-to-image diffusion models." /> -->
     <!-- Twitter automatically scrapes this. Go to https://cards-dev.twitter.com/validator?
         if you update and want to force Twitter to re-scrape. -->
     <meta property="twitter:card"          content="summary" />
-    <meta property="twitter:title"         content="Novel Object Synthesis via Adaptive Text-Image Harmony" />
+    <meta property="twitter:title"         content="VMDiff: Visual Mixing Diffusion for Limitless Cross-Object Synthesis" />
     <!-- <meta property="twitter:description"   content="A method for synthesizing a new object by mixing two different concepts using text-to-image diffusion models." /> -->
     <meta property="twitter:image"         content="./resources/first_fig2.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -284,13 +284,13 @@
     </div>
     <br><br> -->
     <!-- <div class="title">DiverseDream</div> -->
-    <div class="title">Novel Object Synthesis via Adaptive Text-Image Harmony</div>
+    <div class="title">VMDiff: Visual Mixing Diffusion for Limitless Cross-Object Synthesis</div>
     <br>
     <!-- Conference Info -->
-    <div class="conference">NeurIPS 2024</div>
-    <br><br>
+<!--     <div class="conference">NeurIPS 2024</div>
+    <br><br> -->
     <!-- Author List -->
-    <div class="authors">
+<!--     <div class="authors">
         Zeren Xiong<sup>1</sup>, Zedong Zhang<sup>1</sup>, Zikun Chen<sup>1</sup>, Shuo Chen<sup>2</sup>,<br>
         Xiang Li<sup>3</sup>, Gan Sun<sup>4</sup>, Jian Yang<sup>1</sup>, Jun Li<sup>1*</sup>
     </div>
@@ -301,28 +301,20 @@
         <sup>3</sup>Nankai University
         <sup>4</sup>South China University of Technology
     </div><br>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
 
-    <div class="button-container">
-        <!-- <a href="http://arxiv.org/abs/2410.20823" class="btn-icon">
-            <i class="fas fa-file-pdf"></i><span>Paper</span>
-        </a> -->
+<!--     <div class="button-container">
         <a href="http://arxiv.org/abs/2410.20823" class="btn-icon">
             <i class="fas fa-file-alt"></i><span>ArXiv</span>
         </a>
-        <!-- <a href="#" class="btn-icon">
-            <i class="fas fa-video"></i><span>Video</span>
-        </a> -->
+
         <a href="https://github.com/xzr52/ATIH-code?tab=readme-ov-file" class="btn-icon">
             <i class="fab fa-github"></i><span>Code</span>
         </a>
         <a href="https://drive.google.com/file/d/1PsyWxqtBGb-545nPRlpX8VMcW2WTERCc/view?usp=sharing" class="btn-icon">
             <i class="fas fa-hdd"></i><span>Dataset</span>
         </a>
-        <!-- <a href="https://drive.google.com/file/d/1PsyWxqtBGb-545nPRlpX8VMcW2WTERCc/view?usp=sharing" class="btn-icon">
-            <i class="fab fa-github"></i><span>Dataset</span>
-        </a> -->
-    </div>
+    </div> -->
 
 
     <br><br>
@@ -337,9 +329,18 @@
 
     <h1>Abstract</h1>
     <p style="width: 80%;">
-      In this paper, we study an object synthesis task that combines an object text with an object image to create a new object image. However, most diffusion models struggle with this task,i.e., often generating an object that predominantly reflects either the text or the image due to an imbalance between their inputs. To address this issue, we propose a simple yet effective method called Adaptive Text-Image Harmony <b>(ATIH)</b> to generate novel and surprising objects.
-      First, we introduce a scale factor and an injection step to balance text and image features in cross-attention and to preserve image information in self-attention during the text-image inversion diffusion process, respectively. Second, to better integrate object text and image, we design a balanced loss function with a noise parameter, ensuring both optimal editability and fidelity of the object image. Third, to adaptively adjust these parameters, 
-      we present a novel similarity score function that not only maximizes the similarities between the generated object image and the input text/image but also balances these similarities to harmonize text and image integration.  
+       Creating novel images by fusing visual cues from multiple sources is a fundamental yet underexplored problem in image-to-image generation,
+          with broad applications in artistic creation, virtual reality and visual media. Existing methods often
+          face two key challenges: \textit{coexistent generation}, where multiple objects are simply juxtaposed without true integration, 
+          and \textit{bias generation}, where one object dominates the output due to semantic imbalance. To address these issues, 
+          we propose Visual Mixing Diffusion (VMDiff), a diffusion-based framework that synthesizes a single, 
+          coherent object by integrating two input images at both noise and latent levels. 
+          The framework consists of (i) a generative module that combines guided denoising, inversion,
+          and spherical interpolation to achieve structure-aware and semantically balanced fusion, and (ii) an optimization module,
+          Efficient Adaptive Adjustment (EAA), which employs a novel similarity-based score to adaptively search for optimal fusion parameters.
+          Experiments on a curated benchmark of 780 concept pairs demonstrate that our method outperforms strong baselines such as OmniGen and MIP-Adapter
+          in visual quality,
+          semantic consistency, and human-rated creativity.
     </p>
     <h1>Novel Object Synthesis</h1>
     <!-- <p style="width: 80%; TEXT-ALIGN: center">
